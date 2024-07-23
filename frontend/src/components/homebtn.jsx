@@ -1,5 +1,5 @@
 import React from 'react';
-import { IoHomeSharp, IoNavigateCircle,IoSettingsOutline } from "react-icons/io5";
+import { IoHomeSharp } from "react-icons/io5";
 
 const homebtn = () => {
   return (

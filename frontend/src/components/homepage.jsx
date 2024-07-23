@@ -1,6 +1,5 @@
-import { IoHomeSharp, IoNavigateCircle,IoSettingsOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
 import { MdCall } from "react-icons/md";
-import { IoIosSearch } from "react-icons/io";
 import React, { useState, useEffect } from 'react';
 import { FaSpotify } from "react-icons/fa";
 import { MdChat } from "react-icons/md";
