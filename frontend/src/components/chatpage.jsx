@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { IoSend } from "react-icons/io5";
 
 const Chatpage = () => {
-  const [message, setMessage] = useState('');
+  const [userInput, setUserInput] = useState('');
   const [messages, setMessages] = useState([]);
   const messagesContainerRef = useRef(null);
 
@@ -12,17 +12,22 @@ const Chatpage = () => {
   };
 
   const sendMessage = () => {
-    if (message.trim() !== '') {
-        fetch('https://96ae-34-172-253-253.ngrok-free.app/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: message }),
-          })
+    if (userInput.trim() !== '') {
+      const newMessage = { text: userInput, isUserMessage: true };
+      setMessages([...messages, newMessage]);
+      setUserInput('');
+  
+      fetch('https://96ae-34-172-253-253.ngrok-free.app/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userInput }),
+      })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        const responseMessage = data.response; // Access the response property
+        setMessages([...messages, newMessage, { text: responseMessage, isUserMessage: false }]);
+      })
       .catch(error => console.error(error));
-      setMessages([...messages, message]);
-      setMessage('');
     }
   };
 
@@ -38,9 +43,9 @@ const Chatpage = () => {
 
         <div ref={messagesContainerRef} className='h-96 w-12/12 bg-[#242534] relative rounded-lg mb-10 border px-3 py-2 text-white overflow-y-auto hide-scrollbar'>
           {messages.map((message, index) => (
-            <div className='flex justify-end rounded-2xl'>
-              <div className='bg-black py-1 my-1 px-4 rounded-2xl'>
-                <p key={index} className='relative -top-0.5'>{message}</p>
+            <div key={index} className={message.isUserMessage? 'flex justify-end rounded-2xl' : 'flex justify-start rounded-2xl'}>
+              <div className={message.isUserMessage? 'bg-black py-1 my-1 px-4 rounded-2xl' : 'bg-pink-400 py-1 my-1 px-4 rounded-2xl'}>
+                <p className='relative -top-0.5'>{message.text}</p>
               </div>
             </div>
           ))}
@@ -56,8 +61,8 @@ const Chatpage = () => {
                 className='resize-none border md:w-full rounded-lg md:h-12 bg-[#242534] text-[#EFEFEF] md:px-4 md:pt-2 w-full px-3 h-20'
                 cols="30"
                 rows="10"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
               />
             </form>
           </div>
