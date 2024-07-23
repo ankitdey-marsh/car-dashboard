@@ -14,3 +14,13 @@ body{
 .spotify:hover{
     border-radius:50px;
 }
+
+.hide-scrollbar {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; 
+  }
