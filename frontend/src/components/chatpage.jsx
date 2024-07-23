@@ -15,16 +15,16 @@ const Chatpage = () => {
 
   return (
     <div>
-      <div className='relative w-12/12 border px-4 py-3 mb-6'>
-      <div className='h-96 w-12/12 bg-[#242534] relative rounded-lg mb-10 border px-3 py-2 text-white'>
-  {messages.map((message, index) => (
-    <div className='flex justify-end rounded-2xl'>
+      <div className='relative w-12/12 border px-4 py-3 mb-6 overflow-hidden'>
+      <div className='h-96 w-12/12 bg-[#242534] relative rounded-lg mb-10 border px-3 py-2 text-white overflow-y-auto'>
+    {messages.map((message, index) => (
+      <div className='flex justify-end rounded-2xl'>
         <div className='bg-black py-1 my-1 px-4 rounded-2xl'>
-            <p key={index}>{message}</p>
+          <p key={index} className='relative -top-0.5'>{message}</p>
         </div>
-    </div>
-  ))}
-</div>
+      </div>
+    ))}
+  </div>
         
         <div className='flex justify-between'>
           <div className='h-12 w-11/12'>
