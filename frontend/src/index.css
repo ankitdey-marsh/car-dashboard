@@ -6,4 +6,11 @@
 body{
     background-color: #1A1B26;
 }
+.spotify{
+    border-radius: 20px;
+    transition:0.3s;
+}
 
+.spotify:hover{
+    border-radius:50px;
+}
