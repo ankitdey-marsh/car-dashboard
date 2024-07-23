@@ -17,7 +17,7 @@ const Chatpage = () => {
       setMessages([...messages, newMessage]);
       setUserInput('');
   
-      fetch('https://96ae-34-172-253-253.ngrok-free.app/chat', {
+      fetch('https://7b54-34-172-253-253.ngrok-free.app/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userInput }),
