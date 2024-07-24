@@ -19,24 +19,16 @@ function Clock() {
 
 function Homepage() {
   const [weather, setWeather] = useState(null);
-  const [wcond,setWcond]=useState(null);
+  const [wcond, setWcond] = useState(null);
 
   useEffect(() => {
-    const apiKey = 'a50124b9ad9e1a462913232817dc387f';
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=Bhubaneshwar,IN&appid=${apiKey}`;
-  
-    fetch(url, {
-      mode: 'cors',
-      headers: {
-        'Access-Control-Allow-Origin': 'https://car-dashboard-ivory.vercel.app/',
-      },
-    })
-     .then(response => response.json())
-     .then(data => {
-        setWeather(Math.round(data.main.temp - 273));
-        setWcond(data.weather[0].main);
+    fetch('http://localhost:3001/weather')
+      .then(response => response.json())
+      .then(data => {
+        setWeather(data.temperature);
+        setWcond(data.condition);
       })
-     .catch(error => console.error(error));
+      .catch(error => console.error(error));
   }, []);
 
   return (
