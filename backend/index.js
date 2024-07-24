@@ -5,9 +5,9 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000', // allow requests from localhost:3000
-  credentials: true, // allow credentials (e.g. cookies) to be sent
-}));
+    origin: ['http://localhost:3000', 'https://car-dashboard-ivory.vercel.app'], 
+    credentials: true, 
+  }));
 
 const apiKey = 'a50124b9ad9e1a462913232817dc387f';
 
