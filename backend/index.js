@@ -1,15 +1,16 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://car-dashboard-ivory.vercel.app'], 
-    credentials: true, 
-  }));
+  origin: ['http://localhost:3000', 'https://car-dashboard-ivory.vercel.app'], 
+  credentials: true, 
+}));
 
-const apiKey = 'a50124b9ad9e1a462913232817dc387f';
+const apiKey = process.env.W_API;
 
 app.get('/weather', async (req, res) => {
   try {
