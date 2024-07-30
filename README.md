@@ -7,7 +7,7 @@ his repository contains a web application that displays a car dashboard using th
 - AI : LangChain, Gemini
 
 ## Screenshots
-![Homepage Image](https://github.com/[ankitdey-marsh]/[car-dashboard]/blob/[master]/HomePage.jpg?raw=true)
+![Homepage Image](Homepage.jpg)
 
 ## Acknowledgements
 This project is a part of a bigger project, and acts as a demonstration of the idea behind it. 
